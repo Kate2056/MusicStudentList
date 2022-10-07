@@ -23,13 +23,11 @@ public class ListMusicStudentHelper {
 			em.getTransaction().commit();
 			em.close();
 		}
-		
 		public List<ListMusicStudent> showAllStudents(){
 			EntityManager em = emfactory.createEntityManager();
 			List<ListMusicStudent> allStudents = em.createQuery("SELECT i from ListMusicStudent i").getResultList();
 			return allStudents;
 			}
-		
 		public void deleteStudent(ListMusicStudent toDelete) {
 			EntityManager em = emfactory.createEntityManager();
 			em.getTransaction().begin();
@@ -77,10 +75,11 @@ public class ListMusicStudentHelper {
 		public void updateStudent(ListMusicStudent toEdit) {
 			// TODO Auto-generated method stub
 			EntityManager em = emfactory.createEntityManager();
-			em.getTransaction().begin();
+			em.getTransaction().begin();		
 			em.merge(toEdit);
 			em.getTransaction().commit();
 			em.close();
+			
 		}
 		public void cleanUp(){
 			emfactory.close();
